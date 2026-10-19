@@ -285,7 +285,7 @@ const UNG_DUNG = [
    Dán cùng khóa anon/publishable đang dùng trong diem-tin/index.html.
    Để nguyên chữ mẫu thì khối tin tự ẩn, trang vẫn chạy bình thường. */
 const SUPABASE_URL  = "https://elkysoeukqtweytkekwr.supabase.co";
-const SUPABASE_ANON = "DAN_KHOA_ANON_PUBLIC_VAO_DAY";
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsa3lzb2V1a3F0d2V5dGtla3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDI1NzgsImV4cCI6MjEwNzYxODU3OH0.sNDvKU81uqr7P6kXAdAeyhgzDcR7Htz_QP66ZJLjvj0";
 const LINK_DIEM_TIN = "https://tuyengiaotuyenquang.github.io/diem-tin/";
 
 /* ===================== BIỂU TƯỢNG (SVG nét mảnh) ===================== */
@@ -392,7 +392,7 @@ async function taiTinMoi() {
     const k = $("#tinMoi"); if (k) k.remove();
     $("#hangDau").classList.add("khong-tin");
   };
-  if (!SUPABASE_ANON || SUPABASE_ANON.startsWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsa3lzb2V1a3F0d2V5dGtla3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDI1NzgsImV4cCI6MjEwNzYxODU3OH0.sNDvKU81uqr7P6kXAdAeyhgzDcR7Htz_QP66ZJLjvj0")) { anTin(); return; }
+  if (!SUPABASE_ANON || SUPABASE_ANON.startsWith("DAN_KHOA")) { anTin(); return; }
   const headers = SUPABASE_ANON.startsWith("eyJ")
     ? { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } : { apikey: SUPABASE_ANON };
   try {
