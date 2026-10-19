@@ -28,7 +28,7 @@
 body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--chu);background:var(--nen);-webkit-font-smoothing:antialiased;min-height:100vh}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
-.khung{max-width:1180px;margin:0 auto;padding:0 24px}
+.khung{max-width:1480px;margin:0 auto;padding:0 32px}
 
 /* ===== THANH TRÊN ===== */
 .thanh-tren{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--vien)}
@@ -45,21 +45,43 @@ button{font-family:inherit;cursor:pointer}
 .nut-cai.hien{display:inline-flex}
 
 /* ===== HERO ===== */
-.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFBF3 0%,#FFF 100%);border-bottom:1px solid var(--vien)}
-.hero::after{content:"";position:absolute;right:-90px;top:-60px;width:460px;height:460px;background:url(logo.png) center/contain no-repeat;opacity:.07;pointer-events:none}
-.hero .khung{position:relative;z-index:1;padding-top:44px;padding-bottom:40px}
-.chao{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--vang-dam);background:var(--vang-nhat);border:1px solid #FBE3B6;padding:6px 12px;border-radius:999px}
+.hero{background:linear-gradient(180deg,#FFFBF3 0%,#FFF 100%);border-bottom:1px solid var(--vien)}
+.hero .khung{padding-top:26px;padding-bottom:26px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center}
+.hero-trai{min-width:0}
+.chao{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--vang-dam);background:var(--vang-nhat);border:1px solid #FBE3B6;padding:5px 11px;border-radius:999px}
 .chao i{width:7px;height:7px;border-radius:50%;background:var(--vang)}
-.hero h1{margin-top:16px;font-size:44px;line-height:1.12;font-weight:900;color:var(--navy);letter-spacing:-1px}
+.hero h1{margin-top:12px;font-size:32px;line-height:1.15;font-weight:900;color:var(--navy);letter-spacing:-.6px}
 .hero h1 span{color:var(--do)}
-.hero p.mo-ta{margin-top:12px;max-width:600px;font-size:16px;line-height:1.65;color:#475569}
-.tim{display:block;margin-top:26px;position:relative;max-width:560px}
-.tim svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--chu-mo)}
-.tim input{width:100%;height:54px;padding:0 18px 0 48px;border-radius:14px;border:1px solid var(--vien);background:var(--trang);font:inherit;font-size:15px;color:var(--navy);box-shadow:var(--bong);outline:none;transition:.15s}
+.hero p.mo-ta{margin-top:8px;max-width:560px;font-size:14.5px;line-height:1.6;color:#475569}
+.tim{display:block;margin-top:18px;position:relative;max-width:540px}
+.tim svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--chu-mo)}
+.tim input{width:100%;height:48px;padding:0 16px 0 44px;border-radius:12px;border:1px solid var(--vien);background:var(--trang);font:inherit;font-size:14.5px;color:var(--navy);box-shadow:var(--bong);outline:none;transition:.15s}
 .tim input:focus{border-color:var(--do);box-shadow:0 0 0 4px rgba(200,16,46,.10)}
-.so-lieu{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:28px}
-.so-lieu div{display:flex;align-items:baseline;gap:8px;font-size:13.5px;color:var(--chu-phu);font-weight:600}
-.so-lieu b{font-size:26px;font-weight:900;color:var(--navy)}
+.so-lieu{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:18px}
+.so-lieu div{display:flex;align-items:baseline;gap:7px;font-size:13px;color:var(--chu-phu);font-weight:600}
+.so-lieu b{font-size:21px;font-weight:900;color:var(--navy)}
+
+/* Thẻ thống kê truy cập */
+.tk{background:var(--trang);border:1px solid var(--vien);border-radius:18px;box-shadow:var(--bong);padding:18px 20px 14px;min-width:0}
+.tk-dau{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--navy)}
+.tk-dau small{margin-left:auto;font-size:12px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--chu-mo)}
+.tk-so{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.tk-so div{background:var(--nen);border-radius:12px;padding:9px 12px}
+.tk-so span{display:block;font-size:11.5px;font-weight:600;color:var(--chu-phu)}
+.tk-so b{display:block;margin-top:2px;font-size:20px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums}
+.tk-so div:first-child b{color:var(--do)}
+.bieu-do{position:relative;margin-top:12px}
+.bieu-do svg{display:block;width:100%;height:120px;overflow:visible}
+.bieu-do{min-height:120px}
+.bieu-do .cot{fill:var(--do);opacity:.85;transition:opacity .12s}
+.bieu-do .cot.nay{fill:var(--vang)}
+.bieu-do .vung:hover + .cot,.bieu-do .cot.dang{opacity:1}
+.bieu-do .luoi-ngang{stroke:#EEF1F5;stroke-width:1}
+.bieu-do .nhan-truc{font-size:10.5px;fill:var(--chu-mo);font-family:inherit}
+.goi-y{position:absolute;pointer-events:none;transform:translate(-50%,-100%);background:var(--navy);color:#fff;font-size:12px;font-weight:600;line-height:1.45;padding:6px 9px;border-radius:8px;white-space:nowrap;opacity:0;transition:opacity .1s}
+.goi-y.hien{opacity:1}
+.goi-y b{color:var(--vang)}
+.tk-chan{margin-top:8px;font-size:11.5px;color:var(--chu-mo);line-height:1.5}
 
 /* ===== KHỐI CHUNG ===== */
 main .khung{padding-top:36px;padding-bottom:56px}
@@ -135,6 +157,7 @@ footer .ct b{color:var(--navy)}
 
 /* ===== ĐIỆN THOẠI / MÁY TÍNH BẢNG ===== */
 @media (max-width:980px){
+  .hero .khung{grid-template-columns:1fr}
   #cacNhom{grid-template-columns:1fr}
   #cacNhom .luoi{grid-template-columns:1fr 1fr}
   .hang-dau{grid-template-columns:1fr 1fr}
@@ -149,13 +172,14 @@ footer .ct b{color:var(--navy)}
   .ngay{display:none}
   .nut-cai span{display:none}
   .nut-cai{padding:0 10px}
-  .hero .khung{padding-top:28px;padding-bottom:28px}
-  .hero::after{width:300px;height:300px;right:-110px;top:-40px}
-  .hero h1{font-size:30px;letter-spacing:-.5px}
-  .hero p.mo-ta{font-size:14.5px}
-  .tim input{height:50px}
-  .so-lieu{gap:10px 22px}
-  .so-lieu b{font-size:22px}
+  .hero .khung{padding-top:20px;padding-bottom:20px;gap:18px}
+  .hero h1{font-size:25px;letter-spacing:-.4px}
+  .hero p.mo-ta{font-size:13.5px}
+  .tim input{height:46px}
+  .so-lieu{gap:6px 20px;margin-top:14px}
+  .so-lieu b{font-size:19px}
+  .tk{padding:16px 14px 12px}
+  .tk-so b{font-size:18px}
   .hang-dau,.hang-dau.khong-tin{grid-template-columns:1fr}
   .noi-bat{min-height:0}
   .luoi,#cacNhom .luoi{grid-template-columns:1fr}
@@ -183,17 +207,30 @@ footer .ct b{color:var(--navy)}
 
 <section class="hero">
   <div class="khung">
-    <span class="chao"><i></i><span id="loiChao">Xin chào</span></span>
-    <h1>Hệ sinh thái <span>chuyển đổi số 4.0</span></h1>
-    <p class="mo-ta">Một điểm truy cập cho các ứng dụng số phục vụ công tác tuyên giáo, trợ lý AI và quản trị nội bộ của Ban Tuyên giáo Tỉnh ủy Tuyên Quang.</p>
-    <label class="tim">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="oTim" type="search" placeholder="Tìm ứng dụng, ví dụ: hồ sơ, nghị quyết, điểm tin…" autocomplete="off">
-    </label>
-    <div class="so-lieu">
-      <div><b id="soApp">0</b> ứng dụng</div>
-      <div><b id="soNhom">0</b> nhóm chức năng</div>
-      <div id="soTinKhoi" hidden><b id="soTin">0</b> tin địa phương trong 24 giờ</div>
+    <div class="hero-trai">
+      <span class="chao"><i></i><span id="loiChao">Xin chào</span></span>
+      <h1>Hệ sinh thái <span>chuyển đổi số 4.0</span></h1>
+      <p class="mo-ta">Một điểm truy cập cho các ứng dụng số phục vụ công tác tuyên giáo, trợ lý AI và quản trị nội bộ của Ban Tuyên giáo Tỉnh ủy Tuyên Quang.</p>
+      <label class="tim">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="oTim" type="search" placeholder="Tìm ứng dụng, ví dụ: hồ sơ, nghị quyết, điểm tin…" autocomplete="off">
+      </label>
+      <div class="so-lieu">
+        <div><b id="soApp">0</b> ứng dụng</div>
+        <div><b id="soNhom">0</b> nhóm chức năng</div>
+        <div id="soTinKhoi" hidden><b id="soTin">0</b> tin địa phương trong 24 giờ</div>
+      </div>
+    </div>
+
+    <div class="tk" id="theThongKe" hidden>
+      <div class="tk-dau">Lượt truy cập<small>14 ngày gần nhất</small></div>
+      <div class="tk-so">
+        <div><span>Hôm nay</span><b id="tkHomNay">0</b></div>
+        <div><span>7 ngày qua</span><b id="tk7Ngay">0</b></div>
+        <div><span>Tổng cộng</span><b id="tkTong">0</b></div>
+      </div>
+      <div class="bieu-do" id="bieuDo"><div class="goi-y" id="goiY"></div></div>
+      <div class="tk-chan" id="tkChan"></div>
     </div>
   </div>
 </section>
@@ -285,7 +322,7 @@ const UNG_DUNG = [
    Dán cùng khóa anon/publishable đang dùng trong diem-tin/index.html.
    Để nguyên chữ mẫu thì khối tin tự ẩn, trang vẫn chạy bình thường. */
 const SUPABASE_URL  = "https://elkysoeukqtweytkekwr.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsa3lzb2V1a3F0d2V5dGtla3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDI1NzgsImV4cCI6MjEwNzYxODU3OH0.sNDvKU81uqr7P6kXAdAeyhgzDcR7Htz_QP66ZJLjvj0";
+const SUPABASE_ANON = "DAN_KHOA_ANON_PUBLIC_VAO_DAY";
 const LINK_DIEM_TIN = "https://tuyengiaotuyenquang.github.io/diem-tin/";
 
 /* ===================== BIỂU TƯỢNG (SVG nét mảnh) ===================== */
@@ -398,7 +435,7 @@ async function taiTinMoi() {
   try {
     const tu = new Date(Date.now() - 86400000).toISOString();
     const loc = `muc=cs.%7Bdiaphuong%7D&ngoai_tinh=is.false&thoi_gian=gte.${encodeURIComponent(tu)}`;
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/dt_bai?select=tieu_de,nguon,thoi_gian&${loc}&order=thoi_gian.desc&limit=5`,
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/dt_bai?select=tieu_de,nguon,thoi_gian&${loc}&order=thoi_gian.desc&limit=4`,
       { headers: { ...headers, Prefer: "count=exact" } });
     if (!r.ok) throw new Error(r.status);
     const ds = await r.json();
@@ -413,6 +450,102 @@ async function taiTinMoi() {
       <div class="mt">${esc(t.nguon || "")}${t.nguon ? " · " : ""}${esc(thoiGianTuongDoi(t.thoi_gian))}</div></a></li>`).join("");
   } catch (e) { console.warn("Không tải được tin mới:", e); anTin(); }
 }
+
+/* ===================== THỐNG KÊ TRUY CẬP ===================== */
+const SO_NGAY_BD = 14;
+function headersSB() {
+  return SUPABASE_ANON.startsWith("eyJ")
+    ? { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } : { apikey: SUPABASE_ANON };
+}
+async function goiHam(ten, thamSo) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${ten}`, {
+    method: "POST", headers: { ...headersSB(), "Content-Type": "application/json" }, body: JSON.stringify(thamSo || {}),
+  });
+  if (!r.ok) throw new Error(`${ten}: ${r.status}`);
+  return r.json();
+}
+function ngayVN(d) {   // yyyy-mm-dd theo giờ Việt Nam
+  return new Date(d.getTime() + 7 * 3600000).toISOString().slice(0, 10);
+}
+const soVN = (n) => Number(n || 0).toLocaleString("vi-VN");
+
+async function taiThongKe() {
+  if (!SUPABASE_ANON || SUPABASE_ANON.startsWith("DAN_KHOA")) return;
+  try {
+    const [rows, tong] = await Promise.all([
+      goiHam("thong_ke_truy_cap_ngay", { so_ngay: SO_NGAY_BD }),
+      goiHam("tong_luot_truy_cap"),
+    ]);
+    // gom theo ngày, đủ 14 ngày (ngày không có lượt = 0)
+    const theoNgay = {}, theoApp = {};
+    rows.forEach(r => {
+      theoNgay[r.ngay] = (theoNgay[r.ngay] || 0) + Number(r.so_luot);
+      theoApp[r.ten_app] = (theoApp[r.ten_app] || 0) + Number(r.so_luot);
+    });
+    const ds = [];
+    for (let i = SO_NGAY_BD - 1; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 86400000), k = ngayVN(d);
+      ds.push({ ngay: k, so: theoNgay[k] || 0 });
+    }
+    $("#tkHomNay").textContent = soVN(ds[ds.length - 1].so);
+    $("#tk7Ngay").textContent = soVN(ds.slice(-7).reduce((a, x) => a + x.so, 0));
+    $("#tkTong").textContent = soVN(tong);
+    const top = Object.entries(theoApp).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    $("#tkChan").textContent = top.length ? "Nhiều nhất: " + top.map(([t, n]) => `${t} (${soVN(n)})`).join(" · ") : "";
+    $("#theThongKe").hidden = false;
+    veBieuDo(ds);
+  } catch (e) { console.warn("Không tải được thống kê truy cập:", e); }
+}
+
+function veBieuDo(ds) {
+  const khung = $("#bieuDo"), W = Math.max(240, Math.round(khung.clientWidth)), H = 120, top = 8, bot = 20;
+  khung.querySelectorAll("svg").forEach(x => x.remove());
+  veBieuDo.ds = ds;
+  const max = Math.max(4, ...ds.map(x => x.so));
+  const buoc = Math.pow(10, Math.floor(Math.log10(max))), tran = Math.ceil(max / buoc) * buoc;
+  const cao = H - top - bot, rong = W / ds.length, be = Math.min(26, rong * 0.62);
+  const y = (v) => top + cao - (v / tran) * cao;
+  let svgStr = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Biểu đồ lượt truy cập ${SO_NGAY_BD} ngày">`;
+  [0.5, 1].forEach(t => { svgStr += `<line class="luoi-ngang" x1="0" x2="${W}" y1="${y(tran * t)}" y2="${y(tran * t)}"/>`; });
+  ds.forEach((x, i) => {
+    const cx = i * rong + rong / 2, h = Math.max(x.so ? 3 : 0, (x.so / tran) * cao), r = Math.min(4, be / 2, h);
+    const x0 = cx - be / 2, y0 = top + cao - h;
+    // cột bo 4px đầu trên, đáy phẳng
+    const duong = h > 0 ? `M${x0},${top + cao} V${y0 + r} Q${x0},${y0} ${x0 + r},${y0} H${x0 + be - r} Q${x0 + be},${y0} ${x0 + be},${y0 + r} V${top + cao} Z` : "";
+    svgStr += `<rect class="vung" data-i="${i}" x="${i * rong}" y="0" width="${rong}" height="${H - bot}" fill="transparent"/>`;
+    if (duong) svgStr += `<path class="cot ${i === ds.length - 1 ? "nay" : ""}" data-i="${i}" d="${duong}"/>`;
+    if (i % (W < 420 ? 3 : 2) === (ds.length - 1) % (W < 420 ? 3 : 2)) {
+      const [, m, d] = x.ngay.split("-");
+      svgStr += `<text class="nhan-truc" x="${cx}" y="${H - 5}" text-anchor="middle">${+d}/${+m}</text>`;
+    }
+  });
+  svgStr += `<line x1="0" x2="${W}" y1="${top + cao}" y2="${top + cao}" stroke="#E2E8F0"/></svg>`;
+  khung.insertAdjacentHTML("beforeend", svgStr);
+  const svgEl = khung.querySelector("svg"), goiY = $("#goiY");
+  const thu = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+  function hien(i) {
+    const x = ds[i], [yy, m, d] = x.ngay.split("-");
+    const dt = new Date(+yy, m - 1, +d);
+    goiY.innerHTML = `${thu[dt.getDay()]}, ${+d}/${+m}: <b>${soVN(x.so)}</b> lượt`;
+    const kt = svgEl.getBoundingClientRect(), tl = kt.width / W;
+    const left = Math.min(Math.max((i * rong + rong / 2) * tl, 60), kt.width - 60);
+    goiY.style.left = left + "px";
+    goiY.style.top = Math.max(y(x.so) * (kt.height / H) - 6, 14) + "px";
+    goiY.classList.add("hien");
+    svgEl.querySelectorAll(".cot").forEach(c => c.classList.toggle("dang", c.dataset.i == i));
+  }
+  function an() { goiY.classList.remove("hien"); svgEl.querySelectorAll(".cot.dang").forEach(c => c.classList.remove("dang")); }
+  svgEl.addEventListener("pointermove", (e) => {
+    const t = e.target.closest("[data-i]"); if (t) hien(+t.dataset.i); else an();
+  });
+  svgEl.addEventListener("pointerleave", an);
+}
+
+let _hen;
+window.addEventListener("resize", () => {
+  clearTimeout(_hen);
+  _hen = setTimeout(() => { if (veBieuDo.ds) veBieuDo(veBieuDo.ds); }, 150);
+});
 
 /* ===================== CÀI ỨNG DỤNG (PWA) ===================== */
 let suKienCai = null;
@@ -439,6 +572,7 @@ if ("serviceWorker" in navigator) {
 /* ===================== KHỞI ĐỘNG ===================== */
 veTrang();
 taiTinMoi();
+taiThongKe();
 if (window.matchMedia("(max-width:640px)").matches) $("#oTim").placeholder = "Tìm ứng dụng…";
 
 try {   // ghi lượt truy cập, mỗi phiên 1 lần
