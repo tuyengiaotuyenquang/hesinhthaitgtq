@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hệ sinh thái chuyển đổi số 4.0 · Ban Tuyên giáo Tỉnh ủy Tuyên Quang</title>
+<meta name="description" content="Cổng truy cập các ứng dụng chuyển đổi số của Ban Tuyên giáo Tỉnh ủy Tuyên Quang">
+<meta name="theme-color" content="#C8102E">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TG Tuyên Quang">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --do:#C8102E; --do-dam:#9E0B23; --do-nhat:#FDECEF;
+  --vang:#F5A623; --vang-dam:#B7770C; --vang-nhat:#FFF6E5;
+  --navy:#0D1B2A; --chu:#1E293B; --chu-phu:#64748B; --chu-mo:#94A3B8;
+  --vien:#E8ECF2; --nen:#F7F8FA; --trang:#fff;
+  --bong:0 1px 2px rgba(13,27,42,.04),0 6px 20px rgba(13,27,42,.06);
+  --bong-hover:0 2px 4px rgba(13,27,42,.05),0 16px 36px rgba(13,27,42,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--chu);background:var(--nen);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.khung{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ===== THANH TRÊN ===== */
+.thanh-tren{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--vien)}
+.thanh-tren::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--do) 0%,var(--do) 60%,var(--vang) 100%)}
+.thanh-tren .khung{height:68px;display:flex;align-items:center;gap:12px}
+.thanh-tren img{width:42px;height:42px}
+.ten-ban{min-width:0}
+.ten-ban small{display:block;font-size:11px;font-weight:800;letter-spacing:1.3px;color:var(--do);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ten-ban b{display:block;font-size:16px;font-weight:800;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thanh-phai{margin-left:auto;display:flex;align-items:center;gap:10px;flex:none}
+.ngay{font-size:13px;font-weight:600;color:var(--chu-phu)}
+.nut-cai{display:none;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--do);background:var(--trang);color:var(--do);font-size:13px;font-weight:700;transition:.15s}
+.nut-cai:hover{background:var(--do);color:#fff}
+.nut-cai.hien{display:inline-flex}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFBF3 0%,#FFF 100%);border-bottom:1px solid var(--vien)}
+.hero::after{content:"";position:absolute;right:-90px;top:-60px;width:460px;height:460px;background:url(logo.png) center/contain no-repeat;opacity:.07;pointer-events:none}
+.hero .khung{position:relative;z-index:1;padding-top:44px;padding-bottom:40px}
+.chao{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--vang-dam);background:var(--vang-nhat);border:1px solid #FBE3B6;padding:6px 12px;border-radius:999px}
+.chao i{width:7px;height:7px;border-radius:50%;background:var(--vang)}
+.hero h1{margin-top:16px;font-size:44px;line-height:1.12;font-weight:900;color:var(--navy);letter-spacing:-1px}
+.hero h1 span{color:var(--do)}
+.hero p.mo-ta{margin-top:12px;max-width:600px;font-size:16px;line-height:1.65;color:#475569}
+.tim{display:block;margin-top:26px;position:relative;max-width:560px}
+.tim svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--chu-mo)}
+.tim input{width:100%;height:54px;padding:0 18px 0 48px;border-radius:14px;border:1px solid var(--vien);background:var(--trang);font:inherit;font-size:15px;color:var(--navy);box-shadow:var(--bong);outline:none;transition:.15s}
+.tim input:focus{border-color:var(--do);box-shadow:0 0 0 4px rgba(200,16,46,.10)}
+.so-lieu{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:28px}
+.so-lieu div{display:flex;align-items:baseline;gap:8px;font-size:13.5px;color:var(--chu-phu);font-weight:600}
+.so-lieu b{font-size:26px;font-weight:900;color:var(--navy)}
+
+/* ===== KHỐI CHUNG ===== */
+main .khung{padding-top:36px;padding-bottom:56px}
+.tieu-de-khoi{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+.tieu-de-khoi h2{font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);white-space:nowrap}
+.tieu-de-khoi h2::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:10px;vertical-align:middle;background:linear-gradient(90deg,var(--do),var(--vang))}
+.tieu-de-khoi::after{content:"";flex:1;height:1px;background:var(--vien)}
+.tieu-de-khoi small{order:2;font-size:12.5px;color:var(--chu-mo);font-weight:600;white-space:nowrap}
+#cacNhom{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 20px;align-items:start}
+#cacNhom .luoi{grid-template-columns:1fr}
+
+/* ===== NỔI BẬT + TIN MỚI ===== */
+.hang-dau{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:18px}
+.hang-dau.khong-tin{grid-template-columns:1fr 1fr}
+.noi-bat{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:260px;padding:26px;border-radius:20px;color:#fff;box-shadow:var(--bong);transition:transform .2s,box-shadow .2s}
+.noi-bat:hover{transform:translateY(-4px);box-shadow:var(--bong-hover)}
+.noi-bat.do{background:linear-gradient(145deg,#D4142F 0%,#A50D25 100%)}
+.noi-bat.navy{background:linear-gradient(145deg,#1B3150 0%,#0D1B2A 100%)}
+.noi-bat::after{content:"";position:absolute;right:-50px;bottom:-50px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.35),rgba(245,166,35,0) 70%)}
+.noi-bat .bt{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:var(--vang)}
+.noi-bat .nhom{margin-top:22px;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.noi-bat h3{margin-top:6px;font-size:23px;font-weight:800;line-height:1.25}
+.noi-bat p{margin-top:8px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.82)}
+.noi-bat .hinh-chim{position:absolute;right:18px;bottom:14px;color:rgba(255,255,255,.08);pointer-events:none}
+.noi-bat .di{position:relative;z-index:1;margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--vang)}
+.noi-bat .di svg{transition:transform .2s}
+.noi-bat:hover .di svg{transform:translateX(4px)}
+
+.tin-moi{background:var(--trang);border:1px solid var(--vien);border-radius:20px;box-shadow:var(--bong);padding:20px 22px;display:flex;flex-direction:column;min-height:260px}
+.tin-moi-dau{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--navy)}
+.cham-song{width:8px;height:8px;border-radius:50%;background:var(--do);animation:song 1.8s infinite}
+@keyframes song{0%{box-shadow:0 0 0 0 rgba(200,16,46,.45)}70%{box-shadow:0 0 0 8px rgba(200,16,46,0)}100%{box-shadow:0 0 0 0 rgba(200,16,46,0)}}
+.tin-moi-dau a{margin-left:auto;font-size:12.5px;letter-spacing:0;text-transform:none;color:var(--do);font-weight:700}
+.tin-moi ul{list-style:none;margin-top:8px}
+.tin-moi li a{display:block;padding:10px 0;border-top:1px solid #F1F3F7}
+.tin-moi li:first-child a{border-top:0}
+.tin-moi li a:hover .tt{color:var(--do)}
+.tin-moi .tt{font-size:14px;font-weight:600;line-height:1.45;color:var(--navy);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .12s}
+.tin-moi .mt{margin-top:3px;font-size:12px;color:var(--chu-mo);font-weight:500}
+.xuong{height:11px;border-radius:6px;margin:9px 0;background:linear-gradient(90deg,#EEF1F5,#F7F8FA,#EEF1F5);background-size:200% 100%;animation:anh 1.2s infinite}
+@keyframes anh{to{background-position:-200% 0}}
+
+/* ===== LƯỚI ỨNG DỤNG ===== */
+.luoi{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.the{position:relative;display:flex;flex-direction:column;background:var(--trang);border:1px solid var(--vien);border-radius:18px;padding:22px;box-shadow:var(--bong);transition:transform .18s,box-shadow .18s,border-color .18s}
+.the:hover{transform:translateY(-3px);box-shadow:var(--bong-hover);border-color:#F3C3CB}
+.the-dau{display:flex;align-items:flex-start;gap:12px}
+.the .bt{width:48px;height:48px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--do-nhat);color:var(--do);transition:.18s}
+.the:hover .bt{background:var(--do);color:#fff}
+.nhan{margin-left:auto;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.nhan.moi{background:var(--do);color:#fff}
+.nhan.dang-phat-trien{background:var(--vang-nhat);color:var(--vang-dam);border:1px solid #FBE3B6}
+.the h3{margin-top:16px;font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3}
+.the p{margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--chu-phu);flex:1}
+.the-chan{margin-top:16px;padding-top:14px;border-top:1px dashed var(--vien);display:flex;align-items:center;gap:10px;font-size:12px;color:var(--chu-mo);font-weight:500}
+.the-chan>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.the-chan .mo{margin-left:auto;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--do)}
+.the-chan .mo svg{transition:transform .18s}
+.the:hover .the-chan .mo svg{transform:translateX(3px)}
+.khong-thay{display:none;padding:40px 20px;text-align:center;color:var(--chu-phu);font-size:14.5px;background:var(--trang);border:1px dashed #CBD5E1;border-radius:16px}
+
+/* ===== CHÂN TRANG ===== */
+footer{border-top:1px solid var(--vien);background:var(--trang)}
+footer .khung{padding-top:24px;padding-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+footer img{width:40px;height:40px}
+footer .ct{font-size:13px;line-height:1.7;color:var(--chu-phu)}
+footer .ct b{color:var(--navy)}
+
+.goi-y-cai{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:none;align-items:center;gap:12px;padding:14px 16px;background:var(--navy);color:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(13,27,42,.35);font-size:13.5px;line-height:1.5}
+.goi-y-cai.hien{display:flex}
+.goi-y-cai img{width:40px;height:40px;flex:none;border-radius:10px;background:#fff}
+.goi-y-cai button{flex:none;border:0;background:none;color:rgba(255,255,255,.7);font-size:22px;line-height:1;padding:4px}
+
+/* ===== ĐIỆN THOẠI / MÁY TÍNH BẢNG ===== */
+@media (max-width:980px){
+  #cacNhom{grid-template-columns:1fr}
+  #cacNhom .luoi{grid-template-columns:1fr 1fr}
+  .hang-dau{grid-template-columns:1fr 1fr}
+  .tin-moi{grid-column:1/-1;min-height:0}
+}
+@media (max-width:640px){
+  .khung{padding:0 16px}
+  .thanh-tren .khung{height:60px}
+  .thanh-tren img{width:36px;height:36px}
+  .ten-ban small{font-size:9.5px;letter-spacing:.7px}
+  .ten-ban b{font-size:14px}
+  .ngay{display:none}
+  .nut-cai span{display:none}
+  .nut-cai{padding:0 10px}
+  .hero .khung{padding-top:28px;padding-bottom:28px}
+  .hero::after{width:300px;height:300px;right:-110px;top:-40px}
+  .hero h1{font-size:30px;letter-spacing:-.5px}
+  .hero p.mo-ta{font-size:14.5px}
+  .tim input{height:50px}
+  .so-lieu{gap:10px 22px}
+  .so-lieu b{font-size:22px}
+  .hang-dau,.hang-dau.khong-tin{grid-template-columns:1fr}
+  .noi-bat{min-height:0}
+  .luoi,#cacNhom .luoi{grid-template-columns:1fr}
+  #cacNhom{margin-top:32px}
+}
+</style>
+</head>
+<body>
+
+<header class="thanh-tren">
+  <div class="khung">
+    <img src="logo.png" alt="Logo Tuyên giáo">
+    <div class="ten-ban">
+      <small>Ban Tuyên giáo Tỉnh ủy Tuyên Quang</small>
+      <b>Hệ sinh thái chuyển đổi số 4.0</b>
+    </div>
+    <div class="thanh-phai">
+      <span class="ngay" id="ngay"></span>
+      <button class="nut-cai" id="nutCai" title="Cài lên máy như một ứng dụng">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+        <span>Cài ứng dụng</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="khung">
+    <span class="chao"><i></i><span id="loiChao">Xin chào</span></span>
+    <h1>Hệ sinh thái <span>chuyển đổi số 4.0</span></h1>
+    <p class="mo-ta">Một điểm truy cập cho các ứng dụng số phục vụ công tác tuyên giáo, trợ lý AI và quản trị nội bộ của Ban Tuyên giáo Tỉnh ủy Tuyên Quang.</p>
+    <label class="tim">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="oTim" type="search" placeholder="Tìm ứng dụng, ví dụ: hồ sơ, nghị quyết, điểm tin…" autocomplete="off">
+    </label>
+    <div class="so-lieu">
+      <div><b id="soApp">0</b> ứng dụng</div>
+      <div><b id="soNhom">0</b> nhóm chức năng</div>
+      <div id="soTinKhoi" hidden><b id="soTin">0</b> tin địa phương trong 24 giờ</div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="khung">
+
+    <section id="khoiDau">
+      <div class="tieu-de-khoi"><h2>Dùng nhiều nhất</h2></div>
+      <div class="hang-dau" id="hangDau"></div>
+    </section>
+
+    <div id="cacNhom"></div>
+    <div class="khong-thay" id="khongThay">Không tìm thấy ứng dụng phù hợp.</div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="khung">
+    <img src="logo.png" alt="">
+    <div class="ct">
+      <b>© <span id="nam">2026</span> Ban Tuyên giáo Tỉnh ủy Tuyên Quang</b><br>
+      Phát triển bởi: Ngạc Văn Tuấn – Chuyên viên Văn phòng Ban Tuyên giáo Tỉnh ủy
+    </div>
+  </div>
+</footer>
+
+<div class="goi-y-cai" id="goiYIos">
+  <img src="icons/icon-192.png" alt="">
+  <div>Thêm vào màn hình chính: bấm nút <b>Chia sẻ</b> rồi chọn <b>“Thêm vào MH chính”</b>.</div>
+  <button id="dongGoiY" aria-label="Đóng">×</button>
+</div>
+
+<script>
+/* =====================================================================
+   DANH SÁCH ỨNG DỤNG — thêm, sửa, bớt app tại đây
+   nhan:      "moi" | "dang-phat-trien" | null
+   noiBat:    true  -> hiện thẻ lớn ở mục "Dùng nhiều nhất" (nên chọn 2 app)
+   streamlit: true  -> ghi chú "lần đầu mở có thể chờ khởi động"
+   bieuTuong: tên biểu tượng trong mục BIEU_TUONG bên dưới
+   ===================================================================== */
+const NHOM = [
+  { ma: "thongtin", ten: "Thông tin – Tuyên truyền" },
+  { ma: "ai",       ten: "Trợ lý AI" },
+  { ma: "noibo",    ten: "Quản trị nội bộ" },
+];
+
+const UNG_DUNG = [
+  {
+    nhom: "thongtin", ten: "Điểm tin báo chí", bieuTuong: "bao",
+    moTa: "Tổng hợp tin tức tự động 24/7: tiêu điểm trong nước, quốc tế, dư luận mạng xã hội và tin 124 xã, phường.",
+    url: "https://tuyengiaotuyenquang.github.io/diem-tin/",
+    nhan: "moi", noiBat: true, tuKhoa: "tin tuc bao chi du luan mang xa hoi",
+  },
+  {
+    nhom: "thongtin", ten: "Bản tin sinh hoạt", bieuTuong: "sach",
+    moTa: "Bản tin điện tử nội bộ dạng lật trang phục vụ sinh hoạt chi bộ và sinh hoạt chuyên đề.",
+    url: "https://bantinchibo.streamlit.app/",
+    streamlit: true, tuKhoa: "ban tin chi bo sinh hoat",
+  },
+  {
+    nhom: "ai", ten: "Hỏi đáp Nghị quyết", bieuTuong: "co",
+    moTa: "Chatbot AI tra cứu, giải đáp Nghị quyết Đại hội đại biểu Đảng bộ tỉnh nhiệm kỳ 2025–2030.",
+    url: "http://hoidapnghiquyet.tuyenquang.gov.vn",
+    tuKhoa: "nghi quyet dai hoi chatbot",
+  },
+  {
+    nhom: "ai", ten: "Hỏi đáp chuyển đổi số", bieuTuong: "chip",
+    moTa: "Trợ lý ảo cung cấp kiến thức và giải đáp các vấn đề về chuyển đổi số ở địa phương.",
+    url: "http://hoidapcds.tuyenquang.gov.vn",
+    tuKhoa: "cds chuyen doi so tro ly",
+  },
+  {
+    nhom: "noibo", ten: "Quản lý hồ sơ CBCC", bieuTuong: "hoSo",
+    moTa: "Số hóa hồ sơ cán bộ, công chức; quá trình công tác, lương, nâng lương và tra cứu bằng AI; xuất sơ yếu lý lịch.",
+    url: "https://ngactiensinh.github.io/hoso-cbcc/",
+    noiBat: true, tuKhoa: "ho so can bo cong chuc luong nang luong ly lich",
+  },
+  {
+    nhom: "noibo", ten: "E-Cabinet TGDV", bieuTuong: "hop",
+    moTa: "Phòng họp không giấy: tài liệu họp số hóa, quản lý thời gian và lấy ý kiến đại biểu trực tuyến.",
+    url: "https://tailieuhopbtgdv.streamlit.app/",
+    streamlit: true, tuKhoa: "phong hop khong giay tai lieu hop",
+  },
+];
+
+/* Khối "Tin mới nhất" đọc từ Supabase của app Điểm tin.
+   Dán cùng khóa anon/publishable đang dùng trong diem-tin/index.html.
+   Để nguyên chữ mẫu thì khối tin tự ẩn, trang vẫn chạy bình thường. */
+const SUPABASE_URL  = "https://elkysoeukqtweytkekwr.supabase.co";
+const SUPABASE_ANON = "DAN_KHOA_ANON_PUBLIC_VAO_DAY";
+const LINK_DIEM_TIN = "https://tuyengiaotuyenquang.github.io/diem-tin/";
+
+/* ===================== BIỂU TƯỢNG (SVG nét mảnh) ===================== */
+const BIEU_TUONG = {
+  bao:  '<path d="M4 5h13v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v10a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5M8 17h3"/>',
+  sach: '<path d="M2 5.5C4 4.5 7 4 12 6c5-2 8-1.5 10-.5V19c-2-1-5-1.5-10 .5-5-2-8-1.5-10-.5z"/><path d="M12 6v13.5"/>',
+  co:   '<path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/>',
+  chip: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><path d="M10 10h4v4h-4z"/>',
+  hoSo: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="2"/><path d="M8.5 17.5c.6-1.6 2-2.5 3.5-2.5s2.9.9 3.5 2.5"/>',
+  hop:  '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M7 12l3-3 2 2 4-4"/>',
+};
+function svg(ten, co = 24) {
+  return `<svg width="${co}" height="${co}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${BIEU_TUONG[ten] || BIEU_TUONG.chip}</svg>`;
+}
+const MUI_TEN = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
+
+/* ===================== TIỆN ÍCH ===================== */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const boDau = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase();
+const tenNhom = (ma) => (NHOM.find(n => n.ma === ma) || {}).ten || "";
+function tenMien(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
+function thoiGianTuongDoi(iso) {
+  const g = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (g < 3600) return `${Math.max(1, Math.floor(g / 60))} phút trước`;
+  if (g < 86400) return `${Math.floor(g / 3600)} giờ trước`;
+  return `${Math.floor(g / 86400)} ngày trước`;
+}
+
+/* ===================== LỜI CHÀO, NGÀY ===================== */
+(function () {
+  const d = new Date(), h = d.getHours();
+  $("#loiChao").textContent = h < 11 ? "Chào buổi sáng" : h < 13 ? "Chào buổi trưa" : h < 18 ? "Chào buổi chiều" : "Chào buổi tối";
+  const thu = ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"][d.getDay()];
+  $("#ngay").textContent = `${thu}, ${d.toLocaleDateString("vi-VN")}`;
+  $("#nam").textContent = d.getFullYear();
+})();
+
+/* ===================== VẼ THẺ ===================== */
+function theNoiBat(a, i) {
+  return `<a class="noi-bat ${i % 2 ? "navy" : "do"}" href="${esc(a.url)}" target="_blank" rel="noopener">
+    <div class="bt">${svg(a.bieuTuong, 28)}</div>
+    <div class="nhom">${esc(tenNhom(a.nhom))}</div>
+    <h3>${esc(a.ten)}</h3>
+    <p>${esc(a.moTa)}</p>
+    <span class="hinh-chim">${svg(a.bieuTuong, 150)}</span>
+    <span class="di">Mở ứng dụng ${MUI_TEN}</span>
+  </a>`;
+}
+function theThuong(a) {
+  const nhan = a.nhan === "moi" ? '<span class="nhan moi">Mới</span>'
+    : a.nhan === "dang-phat-trien" ? '<span class="nhan dang-phat-trien">Đang phát triển</span>' : "";
+  const ghiChu = a.streamlit ? "Lần đầu mở có thể chờ khởi động" : esc(tenMien(a.url));
+  return `<a class="the" href="${esc(a.url)}" target="_blank" rel="noopener" data-tim="${esc(boDau(a.ten + " " + a.moTa + " " + (a.tuKhoa || "") + " " + tenNhom(a.nhom)))}">
+    <div class="the-dau"><div class="bt">${svg(a.bieuTuong)}</div>${nhan}</div>
+    <h3>${esc(a.ten)}</h3>
+    <p>${esc(a.moTa)}</p>
+    <div class="the-chan"><span>${ghiChu}</span><span class="mo">Truy cập ${MUI_TEN}</span></div>
+  </a>`;
+}
+
+function veTrang() {
+  const noiBat = UNG_DUNG.filter(a => a.noiBat);
+  $("#hangDau").innerHTML = noiBat.map(theNoiBat).join("") + `
+    <div class="tin-moi" id="tinMoi">
+      <div class="tin-moi-dau"><span class="cham-song"></span>Tin địa phương mới nhất<a href="${LINK_DIEM_TIN}#diaphuong" target="_blank" rel="noopener">Xem tất cả</a></div>
+      <ul id="dsTin">${'<li><div class="xuong" style="width:94%"></div><div class="xuong" style="width:60%"></div></li>'.repeat(4)}</ul>
+    </div>`;
+
+  $("#cacNhom").innerHTML = NHOM.map(n => {
+    const ds = UNG_DUNG.filter(a => a.nhom === n.ma);
+    if (!ds.length) return "";
+    return `<section class="nhom-app" data-nhom="${n.ma}">
+      <div class="tieu-de-khoi"><h2>${esc(n.ten)}</h2><small>${ds.length} ứng dụng</small></div>
+      <div class="luoi">${ds.map(theThuong).join("")}</div>
+    </section>`;
+  }).join("");
+
+  $("#soApp").textContent = UNG_DUNG.length;
+  $("#soNhom").textContent = NHOM.filter(n => UNG_DUNG.some(a => a.nhom === n.ma)).length;
+}
+
+/* ===================== TÌM KIẾM ===================== */
+$("#oTim").addEventListener("input", (e) => {
+  const q = boDau(e.target.value.trim());
+  let con = 0;
+  document.querySelectorAll(".nhom-app").forEach(sec => {
+    let n = 0;
+    sec.querySelectorAll(".the").forEach(t => {
+      const khop = !q || (" " + t.dataset.tim).includes(" " + q.replace(/\s+/g, " "));
+      t.style.display = khop ? "" : "none";
+      if (khop) n++;
+    });
+    sec.style.display = n ? "" : "none";
+    con += n;
+  });
+  $("#khoiDau").style.display = q ? "none" : "";
+  $("#khongThay").style.display = con ? "none" : "block";
+});
+
+/* ===================== TIN MỚI TỪ ĐIỂM TIN ===================== */
+async function taiTinMoi() {
+  const anTin = () => {
+    const k = $("#tinMoi"); if (k) k.remove();
+    $("#hangDau").classList.add("khong-tin");
+  };
+  if (!SUPABASE_ANON || SUPABASE_ANON.startsWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsa3lzb2V1a3F0d2V5dGtla3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDI1NzgsImV4cCI6MjEwNzYxODU3OH0.sNDvKU81uqr7P6kXAdAeyhgzDcR7Htz_QP66ZJLjvj0")) { anTin(); return; }
+  const headers = SUPABASE_ANON.startsWith("eyJ")
+    ? { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } : { apikey: SUPABASE_ANON };
+  try {
+    const tu = new Date(Date.now() - 86400000).toISOString();
+    const loc = `muc=cs.%7Bdiaphuong%7D&ngoai_tinh=is.false&thoi_gian=gte.${encodeURIComponent(tu)}`;
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/dt_bai?select=tieu_de,nguon,thoi_gian&${loc}&order=thoi_gian.desc&limit=5`,
+      { headers: { ...headers, Prefer: "count=exact" } });
+    if (!r.ok) throw new Error(r.status);
+    const ds = await r.json();
+    const tong = parseInt((r.headers.get("content-range") || "").split("/")[1], 10);
+    if (!isNaN(tong)) { $("#soTin").textContent = tong; $("#soTinKhoi").hidden = false; }
+    if (!ds.length) {
+      $("#dsTin").innerHTML = `<li style="padding:18px 0;color:var(--chu-phu);font-size:14px">Chưa có tin mới trong 24 giờ qua.</li>`;
+      return;
+    }
+    $("#dsTin").innerHTML = ds.map(t => `<li><a href="${LINK_DIEM_TIN}#diaphuong" target="_blank" rel="noopener">
+      <div class="tt">${esc(t.tieu_de)}</div>
+      <div class="mt">${esc(t.nguon || "")}${t.nguon ? " · " : ""}${esc(thoiGianTuongDoi(t.thoi_gian))}</div></a></li>`).join("");
+  } catch (e) { anTin(); }
+}
+
+/* ===================== CÀI ỨNG DỤNG (PWA) ===================== */
+let suKienCai = null;
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); suKienCai = e; $("#nutCai").classList.add("hien"); });
+$("#nutCai").addEventListener("click", async () => {
+  if (suKienCai) { suKienCai.prompt(); await suKienCai.userChoice; suKienCai = null; $("#nutCai").classList.remove("hien"); }
+});
+window.addEventListener("appinstalled", () => $("#nutCai").classList.remove("hien"));
+(function () {   // iPhone/iPad không có nút cài tự động -> hiện hướng dẫn 1 lần
+  const laIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const daCai = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  let daDong = false;
+  try { daDong = localStorage.getItem("hst_dong_goi_y") === "1"; } catch (e) {}
+  if (laIos && !daCai && !daDong) $("#goiYIos").classList.add("hien");
+  $("#dongGoiY").addEventListener("click", () => {
+    $("#goiYIos").classList.remove("hien");
+    try { localStorage.setItem("hst_dong_goi_y", "1"); } catch (e) {}
+  });
+})();
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+
+/* ===================== KHỞI ĐỘNG ===================== */
+veTrang();
+taiTinMoi();
+if (window.matchMedia("(max-width:640px)").matches) $("#oTim").placeholder = "Tìm ứng dụng…";
+
+try {   // ghi lượt truy cập, mỗi phiên 1 lần
+  if (!SUPABASE_ANON.startsWith("DAN_KHOA") && !sessionStorage.getItem("hst_da_ghi")) {
+    const h = SUPABASE_ANON.startsWith("eyJ") ? { Authorization: `Bearer ${SUPABASE_ANON}` } : {};
+    fetch(`${SUPABASE_URL}/rest/v1/thong_ke_truy_cap`, {
+      method: "POST",
+      headers: { apikey: SUPABASE_ANON, ...h, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify({ ten_app: "Hệ sinh thái 4.0" }),
+    }).catch(() => {});
+    sessionStorage.setItem("hst_da_ghi", "1");
+  }
+} catch (e) {}
+</script>
+</body>
+</html>
