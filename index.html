@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hệ sinh thái chuyển đổi số 4.0 · Ban Tuyên giáo Tỉnh ủy Tuyên Quang</title>
+<title>Hệ sinh thái chuyển đổi số 4.0</title>
 <meta name="description" content="Cổng truy cập các ứng dụng chuyển đổi số của Ban Tuyên giáo Tỉnh ủy Tuyên Quang">
 <meta name="theme-color" content="#C8102E">
 <link rel="icon" type="image/png" href="icons/favicon-64.png">
@@ -24,6 +24,7 @@
   --bong-hover:0 2px 4px rgba(13,27,42,.05),0 16px 36px rgba(13,27,42,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--chu);background:var(--nen);-webkit-font-smoothing:antialiased;min-height:100vh}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
@@ -285,7 +286,7 @@ const UNG_DUNG = [
    Dán cùng khóa anon/publishable đang dùng trong diem-tin/index.html.
    Để nguyên chữ mẫu thì khối tin tự ẩn, trang vẫn chạy bình thường. */
 const SUPABASE_URL  = "https://elkysoeukqtweytkekwr.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsa3lzb2V1a3F0d2V5dGtla3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDI1NzgsImV4cCI6MjEwNzYxODU3OH0.sNDvKU81uqr7P6kXAdAeyhgzDcR7Htz_QP66ZJLjvj0";
+const SUPABASE_ANON = "DAN_KHOA_ANON_PUBLIC_VAO_DAY";
 const LINK_DIEM_TIN = "https://tuyengiaotuyenquang.github.io/diem-tin/";
 
 /* ===================== BIỂU TƯỢNG (SVG nét mảnh) ===================== */
@@ -411,7 +412,7 @@ async function taiTinMoi() {
     $("#dsTin").innerHTML = ds.map(t => `<li><a href="${LINK_DIEM_TIN}#diaphuong" target="_blank" rel="noopener">
       <div class="tt">${esc(t.tieu_de)}</div>
       <div class="mt">${esc(t.nguon || "")}${t.nguon ? " · " : ""}${esc(thoiGianTuongDoi(t.thoi_gian))}</div></a></li>`).join("");
-  } catch (e) { anTin(); }
+  } catch (e) { console.warn("Không tải được tin mới:", e); anTin(); }
 }
 
 /* ===================== CÀI ỨNG DỤNG (PWA) ===================== */

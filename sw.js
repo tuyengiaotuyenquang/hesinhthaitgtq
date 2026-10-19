@@ -1,7 +1,7 @@
 /* Bộ nhớ đệm cho phép mở trang khi mạng chập chờn.
    Luôn ưu tiên bản mới trên mạng; mất mạng mới dùng bản đã lưu.
    Khi sửa giao diện nhiều, tăng số phiên bản dưới đây (v1 -> v2...). */
-const BO_NHO = "hst-v1";
+const BO_NHO = "hst-v2";
 const TEP = ["./", "index.html", "logo.png", "manifest.webmanifest",
              "icons/icon-192.png", "icons/icon-512.png", "icons/favicon-64.png"];
 
