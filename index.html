@@ -90,12 +90,16 @@ main .khung{padding-top:36px;padding-bottom:56px}
 .tieu-de-khoi h2::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:10px;vertical-align:middle;background:linear-gradient(90deg,var(--do),var(--vang))}
 .tieu-de-khoi::after{content:"";flex:1;height:1px;background:var(--vien)}
 .tieu-de-khoi small{order:2;font-size:12.5px;color:var(--chu-mo);font-weight:600;white-space:nowrap}
-#cacNhom{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 20px;align-items:start}
-#cacNhom .luoi{grid-template-columns:1fr}
+#cacNhom{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:28px 20px;align-items:start}
+#cacNhom .luoi{grid-template-columns:1fr 1fr}
+#cacNhom .nhom-app.rong{grid-column:1/-1}
+#cacNhom .nhom-app.rong .luoi{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1260px){#cacNhom .luoi{grid-template-columns:1fr}#cacNhom .nhom-app.rong .luoi{grid-template-columns:1fr 1fr}}
 
 /* ===== NỔI BẬT + TIN MỚI ===== */
-.hang-dau{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:18px}
-.hang-dau.khong-tin{grid-template-columns:1fr 1fr}
+.hang-dau{display:grid;grid-template-columns:1fr 1fr 1fr 1.15fr;gap:18px}
+.hang-dau.khong-tin{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1260px){.hang-dau{grid-template-columns:repeat(3,1fr)}.hang-dau .tin-moi{grid-column:1/-1;min-height:0}}
 .noi-bat{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:260px;padding:26px;border-radius:20px;color:#fff;box-shadow:var(--bong);transition:transform .2s,box-shadow .2s}
 .noi-bat:hover{transform:translateY(-4px);box-shadow:var(--bong-hover)}
 .noi-bat.do{background:linear-gradient(145deg,#D4142F 0%,#A50D25 100%)}
@@ -103,7 +107,7 @@ main .khung{padding-top:36px;padding-bottom:56px}
 .noi-bat::after{content:"";position:absolute;right:-50px;bottom:-50px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.35),rgba(245,166,35,0) 70%)}
 .noi-bat .bt{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:var(--vang)}
 .noi-bat .nhom{margin-top:22px;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.noi-bat h3{margin-top:6px;font-size:23px;font-weight:800;line-height:1.25}
+.noi-bat h3{margin-top:6px;font-size:22px;font-weight:800;line-height:1.25}
 .noi-bat p{margin-top:8px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.82)}
 .noi-bat .hinh-chim{position:absolute;right:18px;bottom:14px;color:rgba(255,255,255,.08);pointer-events:none}
 .noi-bat .di{position:relative;z-index:1;margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--vang)}
@@ -138,6 +142,7 @@ main .khung{padding-top:36px;padding-bottom:56px}
 .the p{margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--chu-phu);flex:1}
 .the-chan{margin-top:16px;padding-top:14px;border-top:1px dashed var(--vien);display:flex;align-items:center;gap:10px;font-size:12px;color:var(--chu-mo);font-weight:500}
 .the-chan>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chinh-thuc{display:inline-flex;vertical-align:-2px;margin-right:5px;color:#2F7D4A}
 .the-chan .mo{margin-left:auto;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--do)}
 .the-chan .mo svg{transition:transform .18s}
 .the:hover .the-chan .mo svg{transform:translateX(3px)}
@@ -159,8 +164,8 @@ footer .ct b{color:var(--navy)}
 @media (max-width:980px){
   .hero .khung{grid-template-columns:1fr}
   #cacNhom{grid-template-columns:1fr}
-  #cacNhom .luoi{grid-template-columns:1fr 1fr}
-  .hang-dau{grid-template-columns:1fr 1fr}
+  #cacNhom .luoi,#cacNhom .nhom-app.rong .luoi{grid-template-columns:1fr 1fr}
+  .hang-dau,.hang-dau.khong-tin{grid-template-columns:1fr 1fr}
   .tin-moi{grid-column:1/-1;min-height:0}
 }
 @media (max-width:640px){
@@ -182,7 +187,7 @@ footer .ct b{color:var(--navy)}
   .tk-so b{font-size:18px}
   .hang-dau,.hang-dau.khong-tin{grid-template-columns:1fr}
   .noi-bat{min-height:0}
-  .luoi,#cacNhom .luoi{grid-template-columns:1fr}
+  .luoi,#cacNhom .luoi,#cacNhom .nhom-app.rong .luoi{grid-template-columns:1fr}
   #cacNhom{margin-top:32px}
 }
 </style>
@@ -210,7 +215,7 @@ footer .ct b{color:var(--navy)}
     <div class="hero-trai">
       <span class="chao"><i></i><span id="loiChao">Xin chào</span></span>
       <h1>Hệ sinh thái <span>chuyển đổi số 4.0</span></h1>
-      <p class="mo-ta">Một điểm truy cập cho các ứng dụng số phục vụ công tác tuyên giáo, trợ lý AI và quản trị nội bộ của Ban Tuyên giáo Tỉnh ủy Tuyên Quang.</p>
+      <p class="mo-ta">Một điểm truy cập cho các ứng dụng số phục vụ công tác tuyên giáo, trợ lý AI và các hệ thống của Đảng dành cho cán bộ, đảng viên Ban Tuyên giáo Tỉnh ủy Tuyên Quang.</p>
       <label class="tim">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input id="oTim" type="search" placeholder="Tìm ứng dụng, ví dụ: hồ sơ, nghị quyết, điểm tin…" autocomplete="off">
@@ -274,6 +279,7 @@ footer .ct b{color:var(--navy)}
    bieuTuong: tên biểu tượng trong mục BIEU_TUONG bên dưới
    ===================================================================== */
 const NHOM = [
+  { ma: "dang",     ten: "Hệ thống của Đảng", rong: true },   // rong: nhóm trải hết chiều ngang
   { ma: "thongtin", ten: "Thông tin – Tuyên truyền" },
   { ma: "ai",       ten: "Trợ lý AI" },
   { ma: "noibo",    ten: "Quản trị nội bộ" },
@@ -304,17 +310,30 @@ const UNG_DUNG = [
     url: "http://hoidapcds.tuyenquang.gov.vn",
     tuKhoa: "cds chuyen doi so tro ly",
   },
+  /* Hệ thống của Đảng: chỉ dẫn link sang trang chính thức (…dcs.vn), mở tab mới */
   {
-    nhom: "noibo", ten: "Quản lý hồ sơ CBCC", bieuTuong: "hoSo",
-    moTa: "Số hóa hồ sơ cán bộ, công chức; quá trình công tác, lương, nâng lương và tra cứu bằng AI; xuất sơ yếu lý lịch.",
+    nhom: "dang", ten: "Quản lý hồ sơ CBCC", bieuTuong: "hoSo", chinhThuc: true,
+    moTa: "Phần mềm quản lý hồ sơ cán bộ, công chức, đảng viên trong hệ thống tổ chức xây dựng Đảng.",
     url: "https://tcxdd.dcs.vn/index",
-    noiBat: true, tuKhoa: "ho so can bo cong chuc luong nang luong ly lich",
+    noiBat: true, tuKhoa: "ho so can bo cong chuc dang vien to chuc xay dung dang tcxdd",
   },
   {
-    nhom: "noibo", ten: "E-Cabinet TGDV", bieuTuong: "hop",
-    moTa: "Phòng họp không giấy: tài liệu họp số hóa, quản lý thời gian và lấy ý kiến đại biểu trực tuyến.",
-    url: "https://tailieuhopbtgdv.streamlit.app/",
-    streamlit: true, tuKhoa: "phong hop khong giay tai lieu hop",
+    nhom: "dang", ten: "Sổ tay đảng viên", bieuTuong: "soTay", chinhThuc: true,
+    moTa: "Sổ tay đảng viên điện tử: tra cứu văn bản, tài liệu của Đảng và thông tin phục vụ sinh hoạt đảng.",
+    url: "https://sotaydangvien.dcs.vn/",
+    noiBat: true, tuKhoa: "so tay dang vien sinh hoat chi bo tai lieu van ban",
+  },
+  {
+    nhom: "dang", ten: "Dịch vụ công của Đảng", bieuTuong: "dvc", chinhThuc: true,
+    moTa: "Cổng dịch vụ công trực tuyến của Đảng: thực hiện các thủ tục trong Đảng qua mạng.",
+    url: "https://dichvucong.dcs.vn/web/home",
+    tuKhoa: "dich vu cong thu tuc dang vien truc tuyen",
+  },
+  {
+    nhom: "dang", ten: "Phòng họp không giấy", bieuTuong: "hop", chinhThuc: true,
+    moTa: "Phòng họp không giấy của các cơ quan Đảng: tài liệu họp số hóa, tham gia cuộc họp trên máy tính, điện thoại.",
+    url: "http://hopkhonggiay.dcs.vn/",
+    tuKhoa: "phong hop khong giay tai lieu hop e-cabinet",
   },
 ];
 
@@ -333,10 +352,14 @@ const BIEU_TUONG = {
   chip: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><path d="M10 10h4v4h-4z"/>',
   hoSo: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="2"/><path d="M8.5 17.5c.6-1.6 2-2.5 3.5-2.5s2.9.9 3.5 2.5"/>',
   hop:  '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M7 12l3-3 2 2 4-4"/>',
+  soTay:'<path d="M5 4a2 2 0 0 1 2-2h11v17H7a2 2 0 0 0-2 2z"/><path d="M5 21a2 2 0 0 1 2-2h11v3H7a2 2 0 0 1-2-1"/><path d="M11.5 6.5l.9 1.9 2.1.3-1.5 1.4.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.4 2.1-.3z"/>',
+  dvc:  '<path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/>',
+
 };
 function svg(ten, co = 24) {
   return `<svg width="${co}" height="${co}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${BIEU_TUONG[ten] || BIEU_TUONG.chip}</svg>`;
 }
+const CHINH_THUC = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
 const MUI_TEN = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
 
 /* ===================== TIỆN ÍCH ===================== */
@@ -363,7 +386,7 @@ function thoiGianTuongDoi(iso) {
 
 /* ===================== VẼ THẺ ===================== */
 function theNoiBat(a, i) {
-  return `<a class="noi-bat ${i % 2 ? "navy" : "do"}" href="${esc(a.url)}" target="_blank" rel="noopener">
+  return `<a class="noi-bat ${i % 2 ? "navy" : "do"}" href="${esc(a.url)}" target="_blank" rel="noopener" data-app="${esc(a.ten)}">
     <div class="bt">${svg(a.bieuTuong, 28)}</div>
     <div class="nhom">${esc(tenNhom(a.nhom))}</div>
     <h3>${esc(a.ten)}</h3>
@@ -375,8 +398,9 @@ function theNoiBat(a, i) {
 function theThuong(a) {
   const nhan = a.nhan === "moi" ? '<span class="nhan moi">Mới</span>'
     : a.nhan === "dang-phat-trien" ? '<span class="nhan dang-phat-trien">Đang phát triển</span>' : "";
-  const ghiChu = a.streamlit ? "Lần đầu mở có thể chờ khởi động" : esc(tenMien(a.url));
-  return `<a class="the" href="${esc(a.url)}" target="_blank" rel="noopener" data-tim="${esc(boDau(a.ten + " " + a.moTa + " " + (a.tuKhoa || "") + " " + tenNhom(a.nhom)))}">
+  const ghiChu = a.streamlit ? "Lần đầu mở có thể chờ khởi động"
+    : a.chinhThuc ? `<span class="chinh-thuc" title="Trang chính thức của Đảng">${CHINH_THUC}</span>${esc(tenMien(a.url))}` : esc(tenMien(a.url));
+  return `<a class="the" href="${esc(a.url)}" target="_blank" rel="noopener" data-app="${esc(a.ten)}" data-tim="${esc(boDau(a.ten + " " + a.moTa + " " + (a.tuKhoa || "") + " " + tenNhom(a.nhom)))}">
     <div class="the-dau"><div class="bt">${svg(a.bieuTuong)}</div>${nhan}</div>
     <h3>${esc(a.ten)}</h3>
     <p>${esc(a.moTa)}</p>
@@ -395,7 +419,7 @@ function veTrang() {
   $("#cacNhom").innerHTML = NHOM.map(n => {
     const ds = UNG_DUNG.filter(a => a.nhom === n.ma);
     if (!ds.length) return "";
-    return `<section class="nhom-app" data-nhom="${n.ma}">
+    return `<section class="nhom-app${n.rong ? " rong" : ""}" data-nhom="${n.ma}">
       <div class="tieu-de-khoi"><h2>${esc(n.ten)}</h2><small>${ds.length} ứng dụng</small></div>
       <div class="luoi">${ds.map(theThuong).join("")}</div>
     </section>`;
@@ -472,9 +496,10 @@ const soVN = (n) => Number(n || 0).toLocaleString("vi-VN");
 async function taiThongKe() {
   if (!SUPABASE_ANON || SUPABASE_ANON.startsWith("DAN_KHOA")) return;
   try {
-    const [rows, tong] = await Promise.all([
+    const [rows, tong, luotMo] = await Promise.all([
       goiHam("thong_ke_truy_cap_ngay", { so_ngay: SO_NGAY_BD }),
       goiHam("tong_luot_truy_cap"),
+      goiHam("thong_ke_luot_mo", { so_ngay: SO_NGAY_BD }).catch(() => []),   // chưa chạy SQL mới thì bỏ qua
     ]);
     // gom theo ngày, đủ 14 ngày (ngày không có lượt = 0)
     const theoNgay = {}, theoApp = {};
@@ -491,7 +516,11 @@ async function taiThongKe() {
     $("#tk7Ngay").textContent = soVN(ds.slice(-7).reduce((a, x) => a + x.so, 0));
     $("#tkTong").textContent = soVN(tong);
     const top = Object.entries(theoApp).sort((a, b) => b[1] - a[1]).slice(0, 3);
-    $("#tkChan").textContent = top.length ? "Nhiều nhất: " + top.map(([t, n]) => `${t} (${soVN(n)})`).join(" · ") : "";
+    const topMo = (luotMo || []).slice(0, 3);
+    $("#tkChan").innerHTML = [
+      top.length ? "Truy cập nhiều nhất: " + top.map(([t, n]) => `${esc(t)} (${soVN(n)})`).join(" · ") : "",
+      topMo.length ? "Được mở từ Hệ sinh thái nhiều nhất: " + topMo.map(r => `${esc(r.ten_app)} (${soVN(r.so_luot)})`).join(" · ") : "",
+    ].filter(Boolean).join("<br>");
     $("#theThongKe").hidden = false;
     veBieuDo(ds);
   } catch (e) { console.warn("Không tải được thống kê truy cập:", e); }
@@ -568,6 +597,21 @@ window.addEventListener("appinstalled", () => $("#nutCai").classList.remove("hie
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 }
+
+/* ===================== ĐẾM LƯỢT MỞ TỪNG PHẦN MỀM =====================
+   Mỗi lần bấm một thẻ ghi 1 dòng "Mở: <tên phần mềm>" vào bảng thong_ke_truy_cap.
+   Các dòng này được tính riêng, không cộng vào lượt truy cập trang. */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[data-app]");
+  if (!a || !SUPABASE_ANON || SUPABASE_ANON.startsWith("DAN_KHOA")) return;
+  try {
+    fetch(`${SUPABASE_URL}/rest/v1/thong_ke_truy_cap`, {
+      method: "POST", keepalive: true,
+      headers: { ...headersSB(), "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify({ ten_app: "Mở: " + a.dataset.app }),
+    }).catch(() => {});
+  } catch (err) {}
+});
 
 /* ===================== KHỞI ĐỘNG ===================== */
 veTrang();
